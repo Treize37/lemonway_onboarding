@@ -10,6 +10,7 @@ RSpec.describe LemonwayOnboarding::Client do
     LemonwayOnboarding::Configuration.new do |config|
       config.token = 'token'
       config.environment = 'sandbox'
+      config.logger = Logger.new('log/test.log')
     end
   end
 

@@ -35,6 +35,12 @@ RSpec.describe LemonwayOnboarding::Configuration do
       config.timeout = 99
       expect(config.timeout).to eq(99)
     end
+
+    it 'allows reading and writing logger' do
+      custom_logger = Logger.new(StringIO.new)
+      config.logger = custom_logger
+      expect(config.logger).to eq(custom_logger)
+    end
   end
 
   describe '#initialize' do
@@ -60,6 +66,10 @@ RSpec.describe LemonwayOnboarding::Configuration do
 
     it 'sets the base_url according to env' do
       expect(config.base_url).to eq('https://onboarding-api.lemonway.com')
+    end
+
+    it 'sets the logger to a Logger instance by default' do
+      expect(config.logger).to be_a(Logger)
     end
   end
 

@@ -3,7 +3,7 @@
 module LemonwayOnboarding
   # Configuration of the LemonwayOnboarding API client gem.
   class Configuration
-    attr_accessor :base_url, :token, :version, :environment, :proxy, :timeout
+    attr_accessor :base_url, :environment, :logger, :proxy, :timeout, :token, :version
 
     # Initializes the configuration with default values.
     def initialize
@@ -12,6 +12,7 @@ module LemonwayOnboarding
       @timeout = 30
       @token = nil
       @proxy = nil
+      @logger = Logger.new($stdout)
 
       yield self if block_given?
 

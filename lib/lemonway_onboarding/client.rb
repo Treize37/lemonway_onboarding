@@ -36,16 +36,26 @@ module LemonwayOnboarding
 
     # Private: Performs an HTTP request
     def request(method, endpoint, options = {})
+      log_request(method, endpoint, options)
+
       response = Typhoeus::Request.new(
         build_url(endpoint),
         method: method,
         headers: build_headers,
         params: options[:params],
         body: options[:body]&.to_json,
-        timeout: @configuration.timeout
+        timeout: @configuration.timeout,
+        proxy: @configuration.proxy
       ).run
 
       handle_response(response)
+    end
+
+    def log_request(method, endpoint, options)
+      @configuration.logger.info("Request: #{method.upcase} #{build_url(endpoint)}")
+      @configuration.logger.debug("Headers: #{build_headers}")
+      @configuration.logger.debug("Params: #{options[:params]}") if options[:params]
+      @configuration.logger.debug("Body: #{options[:body]}") if options[:body]
     end
 
     def build_url(endpoint)
@@ -55,6 +65,7 @@ module LemonwayOnboarding
     # Builds the headers for the request
     def build_headers
       {
+        'Authorization' => "Bearer Token #{@configuration.token}",
         'Content-Type' => 'application/json',
         'Accept' => 'application/json'
       }
@@ -62,6 +73,8 @@ module LemonwayOnboarding
 
     # Handle the API response
     def handle_response(response)
+      log_response(response)
+
       if response.timed_out?
         raise 'Request timed out. Please check your network connection or increase the timeout.'
       elsif response.success?
@@ -73,6 +86,11 @@ module LemonwayOnboarding
       else
         raise "HTTP request failed: #{response.code} - #{response.body}"
       end
+    end
+
+    def log_response(response)
+      @configuration.logger.info("Response code: #{response.code}")
+      @configuration.logger.debug("Response body: #{response.body}")
     end
   end
 end
