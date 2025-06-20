@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lemonway_onboarding (0.1.0)
+    lemonway_onboarding (0.2.0)
       typhoeus (>= 1.4)
 
 GEM

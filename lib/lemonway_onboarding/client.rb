@@ -65,7 +65,7 @@ module LemonwayOnboarding
     # Builds the headers for the request
     def build_headers
       {
-        'Authorization' => "Bearer Token #{@configuration.token}",
+        'Authorization' => "Bearer #{@configuration.token}",
         'Content-Type' => 'application/json',
         'Accept' => 'application/json'
       }

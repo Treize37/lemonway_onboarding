@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'json'
+
 require 'lemonway_onboarding/api/accounts'
 require 'lemonway_onboarding/api/documents'
 require 'lemonway_onboarding/api/onboardings'
