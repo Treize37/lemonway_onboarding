@@ -13,9 +13,9 @@ Gem::Specification.new do |spec|
     'providing an easy way to interact with the API for onboarding users and managing their accounts.'
   spec.homepage = 'https://github.com/treize37/lemonway_onboarding'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 2.7.0'
 
-  spec.metadata['allowed_push_host'] = "TODO: Set to your gem server 'https://example.com'"
+  spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage

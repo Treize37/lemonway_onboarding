@@ -1,5 +1,7 @@
 name: Ruby
 
+permissions: read-all
+
 on:
   push:
     branches:
