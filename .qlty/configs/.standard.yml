@@ -1,0 +1,5 @@
+ignore:
+  - "**/*":
+      - Style/StringLiterals # Use single quotes for strings
+      - Layout/MultilineMethodCallIndentation # Indentation of multiline method calls
+      - Layout/SpaceInsideHashLiteralBraces # Allow space inside hash literal braces
