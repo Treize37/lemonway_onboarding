@@ -65,7 +65,9 @@ RSpec.describe LemonwayOnboarding::Client do
       Typhoeus.stub('https://onboarding-api.sandbox.lemonway.com/test_endpoint')
               .and_return(Typhoeus::Response.new(code: 0, return_code: :operation_timedout, return_message: 'Timeout'))
 
-      expect { client.get('test_endpoint') }.to raise_error('Request timed out. Please check your network connection or increase the timeout.')
+      expect {
+        client.get('test_endpoint')
+      }.to raise_error('Request timed out. Please check your network connection or increase the timeout.')
     end
 
     it 'raises an error for a failed request' do

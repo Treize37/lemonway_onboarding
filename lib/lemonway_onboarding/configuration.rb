@@ -37,7 +37,7 @@ module LemonwayOnboarding
     # @raise [RuntimeError] If required attributes are missing or invalid
     def validate!
       error_on('token') unless @token
-      error_on('environment') unless %[sandbox production].include?(@environment)
+      error_on('environment') unless %(sandbox production).include?(@environment)
     end
 
     private
@@ -47,11 +47,11 @@ module LemonwayOnboarding
     # @return [void]
     def base_url_from_env
       @base_url = case @environment
-                  when 'production'
-                    'https://onboarding-api.lemonway.com'
-                  when 'sandbox'
-                    'https://onboarding-api.sandbox.lemonway.com'
-                  end
+      when 'production'
+        'https://onboarding-api.lemonway.com'
+      when 'sandbox'
+        'https://onboarding-api.sandbox.lemonway.com'
+      end
     end
 
     # Private: Raises an error if a required attribute is missing.
