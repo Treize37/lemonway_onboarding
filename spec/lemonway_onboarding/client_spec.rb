@@ -65,16 +65,22 @@ RSpec.describe LemonwayOnboarding::Client do
       Typhoeus.stub('https://onboarding-api.sandbox.lemonway.com/test_endpoint')
               .and_return(Typhoeus::Response.new(code: 0, return_code: :operation_timedout, return_message: 'Timeout'))
 
-      expect {
-        client.get('test_endpoint')
-      }.to raise_error('Request timed out. Please check your network connection or increase the timeout.')
+      expect { client.get('test_endpoint') }
+        .to raise_exception(LemonwayOnboarding::Exceptions::RequestError,
+                            'Request timed out. Please check your network connection or increase the timeout.') { |error|
+              expect(error.code).to eq(0)
+            }
     end
 
     it 'raises an error for a failed request' do
       Typhoeus.stub('https://onboarding-api.sandbox.lemonway.com/test_endpoint')
               .and_return(Typhoeus::Response.new(code: 500, body: 'Internal Server Error'))
 
-      expect { client.get('test_endpoint') }.to raise_error('HTTP request failed: 500 - Internal Server Error')
+      expect { client.get('test_endpoint') }
+        .to raise_exception(LemonwayOnboarding::Exceptions::RequestError,
+                            'HTTP request failed: 500 - Internal Server Error') { |error|
+              expect(error.code).to eq(500)
+            }
     end
   end
 end

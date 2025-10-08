@@ -8,8 +8,8 @@ require 'lemonway_onboarding/api/onboardings'
 require 'lemonway_onboarding/client'
 require 'lemonway_onboarding/configuration'
 require 'lemonway_onboarding/version'
+require 'lemonway_onboarding/exceptions'
 
 module LemonwayOnboarding
-  class Error < StandardError; end
   # Your code goes here...
 end
