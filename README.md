@@ -103,7 +103,7 @@ For more advanced usage and available methods, please refer to the [API document
 1. [Install RVM](https://rvm.io/)
 2. Install Ruby with `rvm install` and create alias with `rvm alias create default`
 
-### Running 
+### Running
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
