@@ -117,7 +117,7 @@ module LemonwayOnboarding
       log_response(response)
 
       if response.timed_out?
-        raise 'Request timed out. Please check your network connection or increase the timeout.'
+        request_error('Request timed out. Please check your network connection or increase the timeout.', response)
       elsif response.success?
         # Return nil for DELETE requests with no body
         return nil if response.body.nil? || response.body.strip.empty?
@@ -125,8 +125,17 @@ module LemonwayOnboarding
         # Parse JSON for other successful responses
         JSON.parse(response.body)
       else
-        raise "HTTP request failed: #{response.code} - #{response.body}"
+        request_error("HTTP request failed: #{response.code} - #{response.body}", response)
       end
+    end
+
+    # Private: Raise RequestError when a request was not successful
+    #
+    # @param message [String] The message that will be given to the exception
+    # @param response [Typhoeus::Response] The response object from the HTTP request
+    # @return [void] Raise an error
+    def request_error(message, response)
+      raise Exceptions::RequestError.new(message, code: response.code, body: response.body)
     end
 
     # Private: Logs the response details
