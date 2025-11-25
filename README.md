@@ -98,6 +98,13 @@ For more advanced usage and available methods, please refer to the [API document
 
 ## Development
 
+### Prerequisites
+
+1. [Install RVM](https://rvm.io/)
+2. Install Ruby with `rvm install` and create alias with `rvm alias create default`
+
+### Running
+
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
