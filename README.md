@@ -55,6 +55,14 @@ accounts = accounts_api.index(status: 'active')
 account = accounts_api.show(123)
 ```
 
+#### Profiles
+
+```ruby
+profiles_api = LemonwayOnboarding::Api::Profiles.new(client)
+# Create a profile for an account
+response = profiles_api.create('business', 123, { profile_type: 'admin', email: 'admin@company.com' })
+```
+
 #### Onboardings
 
 ```ruby
