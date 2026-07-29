@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.3] - 2026-07-29
+
+- Updated json gem ([[#10](https://github.com/Treize37/lemonway_onboarding/issues/10)])
+
 ## [0.2.2] - 2025-11-25
 
 - Added onboarding profiles management ([#4](https://github.com/Treize37/lemonway_onboarding/issues/4))
